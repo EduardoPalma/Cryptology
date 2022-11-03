@@ -7,4 +7,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="files\17 LEYES DEL TRABAJO EN EQUIPO.txt" />
+      <Content Include="files\17 LEYES DEL TRABAJO EN EQUIPO.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
