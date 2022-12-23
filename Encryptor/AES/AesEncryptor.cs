@@ -16,19 +16,15 @@ public static class AesEncryptor
         File.WriteAllBytes(filePath,dataEncrypt);
     }
 
-    public static void Decrypt(string filePath,Format u = Format.Txt)
+    public static void Decrypt(string filePath)
     {
         var bytes = File.ReadAllBytes(filePath);
         var passwordByte = SHA512.Create().ComputeHash(Encoding.UTF8.GetBytes(Pw));
         var dataDecrypt = Decrypt(bytes,passwordByte);
-        if (Format.Video == u)
-        {
-            Stream t = new FileStream(filePath, FileMode.Create);
-            var b = new BinaryWriter(t);
-            b.Write(dataDecrypt);
-            b.Close();
-        }
-        else File.WriteAllText(filePath,Encoding.UTF8.GetString(dataDecrypt));
+        Stream t = new FileStream(filePath, FileMode.Create);
+        var b = new BinaryWriter(t);
+        b.Write(dataDecrypt);
+        b.Close();
     }
 
     private static byte[] Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
